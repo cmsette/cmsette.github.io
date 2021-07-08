@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 <p>&nbsp;</p>
 
 ## Overview
-**solveSimplex** is an R function that describes the equilibrium dynamics of _single-population_ evolutionary game theory games of **2-5 strategies**. All strategies are assumed to exist in _admixture_, and engage in _continuous time replicator dynamics_. Methods were developed following Friedman and Sinervo (2016).
+**[solveSimplex](https://github.com/cmsette/solveSimplex)** is an R function that describes the equilibrium dynamics of _single-population_ evolutionary game theory games of **2-5 strategies**. All strategies are assumed to exist in _admixture_, and engage in _continuous time replicator dynamics_. Methods were developed following Friedman and Sinervo (2016).
 
 This code solves for any internal, face, and edge equilibria present in the system and classifies the equilibrium types (**source, saddle, sink**).
 
