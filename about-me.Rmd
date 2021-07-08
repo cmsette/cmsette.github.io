@@ -5,6 +5,7 @@ author: "Carla M. Sette"
 output: html_document
 ---
 <p>&nbsp;</p>
+## Summary ##
 ### I am a computational ecologist who specializes in mechanistic modeling and statistics.
 I received my PhD in Ecology and Evolutionary Biology from UC Santa Cruz in Barry Sinervo's lab. My research has primarily focused on developing mechanistic models describing complex ecological systems.
 
@@ -23,7 +24,7 @@ University of California, Los Angeles
 
 <p>&nbsp;</p>
 ## Publications ##
-**Sette, C.M.** [Variation and Extinction: Models for Alternative Strategies and Climate.](https://escholarship.org/content/qt5mw8939m/qt5mw8939m.pdf) PhD Thesis, University of California, Santa Cruz (2021).
+**Sette, C.M.** ["Variation and Extinction: Models for Alternative Strategies and Climate."](https://escholarship.org/content/qt5mw8939m/qt5mw8939m.pdf) PhD Thesis, University of California, Santa Cruz (2021): 1-151.
 
 **Sette, C.M.**, V.T. Vredenburg, A.G. Zink. ["Differences in fungal disease dynamics in co-occurring terrestrial and aquatic amphibians."](https://link.springer.com/article/10.1007/s10393-020-01501-z) EcoHealth 17.3 (2020): 302-314.
 

@@ -83,7 +83,7 @@ There should be one eigenvalue equal to 0, and n-1 nonzero eigenvalues. Positive
 
 <p>&nbsp;</p>
 ### Solving Rock-Paper-Scissors
-Because the payoffs for each strategy in **Rock-Paper-Scissors** are balanced, each strategy has equal fitness and the equilibrium is $\frac{1}{3}$ Rock, $\frac{1}{3}$ Paper, $\frac{1}{3}$ Scissors, and the equilibrium is a **sink**.
+Because the payoffs for each strategy in **Rock-Paper-Scissors** are balanced, each strategy has equal fitness and the equilibrium is $s^*$ = {$\frac{1}{3}$ Rock, $\frac{1}{3}$ Paper, $\frac{1}{3}$ Scissors}, and the equilibrium is a **sink**.
 
 On the other hand, in competition between pairs of strategies, there is always a winner and a loser. The 2-strategy pairs make up the faces of the game. When each pair is assessed on its own, the losing strategy is a source and the winning strategy is a **sink**. When these faces are assessed as a part of the full game, each of the vertices becomes a **saddle** due to the trajectory leading to this point along one edge and the trajectory leading away from this point along the next edge.
 
