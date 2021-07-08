@@ -10,19 +10,16 @@ knitr::opts_chunk$set(echo = TRUE)
 <p>&nbsp;</p>
 
 ## Overview
-**solveSimplex** is an R function that describes the equilibrium dynamics of _single-population_ evolutionary game theory games of **2-5 strategies**. All strategies are assumed to exist in _admixture_, and engage in _continuous time replicator dynamics_.
+**solveSimplex** is an R function that describes the equilibrium dynamics of _single-population_ evolutionary game theory games of **2-5 strategies**. All strategies are assumed to exist in _admixture_, and engage in _continuous time replicator dynamics_. Methods were developed following Friedman and Sinervo (2016).
 
 This code solves for any internal, face, and edge equilibria present in the system and classifies the equilibrium types (**source, saddle, sink**).
 
-Methods were developed following Friedman and Sinervo (2016).
 <p>&nbsp;</p>
 
 ## _Rock-Paper-Scissors_ as an example
 
 ### What is a population?
 In a single-population game, members of the same group utilize different strategies to compete for the same prize. These competing strategies all interact with one another (exist in admixture), rather than distribute themselves into separate patches.
-
-In the classic schoolyard game _Rock-Paper-Scissors_, players can choose from three strategies.
 
 Examples of single-population games can be found in nature in every taxonomic group. Some examples include: 
 
@@ -32,11 +29,10 @@ Examples of single-population games can be found in nature in every taxonomic gr
 
 <p>&nbsp;</p>
 ### Rock-Paper-Scissors and the W-matrix
-The competitive dynamics of _Rock-Paper-Scissors_ can be described using a **payoff matrix**. The payoff matrix has one row and one column for each strategy in the population. The **payoffs** are numerical values describing the fitness outcome to each strategy (by row) when in pairwise competition with each strategy (by column).
+A **payoff matrix** is used to describe the competitive outcomes in a game. A payoff matrix has one row and one column for each strategy in the population. The **payoffs** are numerical values describing the fitness outcome to each strategy (by row) when in pairwise competition with every possible strategy (by column).
 
-In the classic game, Rock receives a payoff of **0** (a tie) when in competition with other Rocks, a payoff of **-1** (defeat) against Paper, and a payoff of **1** (victory) against Scissors.
+In the classic schoolyard game _Rock-Paper-Scissors_, players can choose from three strategies. For example, Rock receives a payoff of **0** (a tie) when in competition with other Rocks, a payoff of **-1** (defeat) against Paper, and a payoff of **1** (victory) against Scissors. 
 
-<p>&nbsp;</p>
 Therefore, the payoff matrix for a game of Rock-Paper-Scissors looks like:
 ```{r echo=FALSE}
 W <- matrix(c(0,-1,1, 1,0,-1, -1,1,0), ncol=3, byrow=T)
@@ -46,39 +42,44 @@ print(W)
 
 <p>&nbsp;</p>
 ### The replicator equation
-In a population subject to selection, the proportion of the population belonging to each strategy may change over time. If a strategy experiences a higher average fitness than the population average, it will increase in frequency over time; if a strategy experiences a lower average fitness, it will decrease in frequency.
+In a population subject to selection, the proportion of the population belonging to each strategy may change over time. If a strategy experiences a higher average fitness than the population average, it will increase in frequency; if a strategy experiences a lower average fitness, it will decrease.
 
-Under continuous time replicator dynamics, the average fitness (w~i~) of a strategy (i) in competition with all other strategies (j) can be calculated as the weighted average of the payoff (w~ij~) against each strategy, based on the relative frequency of each strategy in the population (s~j~): 
+Under continuous time replicator dynamics (i.e. population frequencies that change continuously over time), the average fitness ($w_{i}$) of a strategy (i) in competition with all other strategies (j) can be calculated as the weighted average of the payoff ($w_{ij}$) against each strategy, based on the relative frequency of each strategy in the population ($s_{j}$): 
 
-              1)    $w_{i}(s)=∑\begin{array}{c} _n \\ ^{j=1}\end{array} ( w_{ij} s_{j} )$
+                            1)    $w_{i}(s)=∑\begin{array}{c} _n \\ ^{j=1}\end{array} ( w_{ij} s_{j} )$
 
-The average population fitness is the weighted average of all strategies' average fitness (w~i~):
+The average population fitness is each strategy's average fitness ($w_{i}$), weighted by its frequency in the population ($s_{i}$):
 
-              2)    $\bar{w}=∑w_{i} s_{i}$
+                            2)    $\bar{w}=∑w_{i} s_{i}$
 
-Finally, the frequency of each strategy in the population (s) will increase or decrease over time (t), based on the difference between the fitness of that strategy and the average fitness of all strategies in the population ($\bar{w}$).
+Finally, the replicator equations describe how the frequency of each strategy in the population will increase or decrease over time $\dot{s}_{i}(t)$, based on the difference between the fitness of that strategy ($w_{i}$) and the average fitness of all strategies in the population ($\bar{w}$).
 
-              3)    $\dot{s}_{i}(t)=(w_{i}-\bar{w})s_{i}(t)$
+                            3)    $\dot{s}_{i}(t)=(w_{i}-\bar{w})s_{i}(t)$
+
+At equilibrium $s^*$, all strategies have equal average fitness. A system of 3+ strategies may have an internal equilibrium, as well as equilibria on the faces (where at least 1 strategy has a population of 0). Conversely, not every system of strategies has an internal equilibrium at all. 
 
 <p>&nbsp;</p>
 ### Classifying equilibria
-An n x n Jacobian matrix is calculated from the set of replicator equations $\dot{s}_{i}(t)$: 
+The existence of an equilibrium does not guarantee a stable population. By classifying equilibria (when they exist), we can predict how the frequencies of each strategy will change in a population over time. This allows us to make predictions from evolutionary game theory models!
 
-              4)    $Dw_i(s^* ) = ∂w_i(s^* )/∂s_j$
+To classify an equilibrium point, we describe the trajectories around the equilibrium point. An n x n Jacobian matrix is calculated from the set of replicator equations $\dot{s}_{i}(t)$ at equilibrium ($s_{j}$): 
+
+                            4)    $Dw_i(s^* ) = ∂w_i(s^* )/∂s_j$
 
 We scale the Jacobian matrix by multiplying it by a projection matrix: 
 
-              5)    $P_0 = I-(\frac{1}{n} * 1_{nxn})$
+                            5)    $P_0 = I-(\frac{1}{n} * 1_{nxn})$
 
-Finally, the eigenvalues for this matrix are calculated and sorted by their real parts from largest to smallest (Sandholm 2010). 
+Finally, the eigenvalues for this matrix are calculated and sorted by their real parts from largest to smallest (_sensu_ Sandholm 2010). 
 
-              6)    $J = Dw_i (s^* ) \cdot P_0$
+                            6)    $J = Dw_i (s^* ) \cdot P_0$
 
 There should be one eigenvalue equal to 0, and n-1 nonzero eigenvalues. Positive eigenvalues represent trajectories moving away from an equilibrium point, while negative eigenvalues represent trajectories moving toward an equilibrium point. 
 
-- **Sink** equilibria are attractors - populations with any starting frequency of strategies will move toward the equilibrium frequency. The eigenvalues will all have negative real parts. 
-- **Source** equilibria are repellers - if perturbed away from the equilibrium frequency, the population will not return to equilibrium. The eigenvalues will all have positive real parts. 
-- **Saddle** equilibria act as attractors from some trajectories and repellers from others. The eigenvalues will have both positive and negative real parts. Here, saddles are classified by the number of positive eigenvalues present.
+- **solveSimplex** returns **No eq** when there is no equilibrium present at the level of the game (internal equilibrium or face) being assessed. 
+- **Sink** equilibria are attractors - populations with any starting frequency of strategies will move toward the equilibrium frequency. The nonzero eigenvalues will all have negative real parts. 
+- **Source** equilibria are repellers - if perturbed away from the equilibrium frequency, the population will not return to equilibrium. The nonzero eigenvalues will all have positive real parts. 
+- **Saddle** equilibria act as attractors from some trajectories and repellers from others. The eigenvalues will have both positive and negative real parts. **solveSimplex** classifies saddles by the number of positive eigenvalues present (eg. **Saddle1, Saddle2, Saddle3**).
 - Finally, this method of classifying games is **Inconclusive** when all the eigenvalues are zero. This occurs in the presence of a _strange attractor_ or population trajectories that _orbit_ around a Nash equilibrium (sink).
 
 <p>&nbsp;</p>
