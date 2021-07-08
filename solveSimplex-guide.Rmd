@@ -10,9 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 <p>&nbsp;</p>
 
 ## Overview
-**solveSimplex** is an R function that describes the equilibrium dynamics of single-population evolutionary game theory games of **2-5 strategies**. All strategies are assumed to exist in _admixture_, and engage in _continuous time replicator dynamics_.
+**solveSimplex** is an R function that describes the equilibrium dynamics of _single-population_ evolutionary game theory games of **2-5 strategies**. All strategies are assumed to exist in _admixture_, and engage in _continuous time replicator dynamics_.
 
-This code solves for any internal, face, and edge equilibria present in the system and classifies the equilibrium types (source, saddle, sink).
+This code solves for any internal, face, and edge equilibria present in the system and classifies the equilibrium types (**source, saddle, sink**).
 
 Methods were developed following Friedman and Sinervo (2016).
 <p>&nbsp;</p>
@@ -61,14 +61,35 @@ Finally, the frequency of each strategy in the population (s) will increase or d
               3)    $\dot{s}_{i}(t)=(w_{i}-\bar{w})s_{i}(t)$
 
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-## Including Plots
+### Classifying equilibria
+An n x n Jacobian matrix is calculated from the set of replicator equations $\dot{s}_{i}(t)$: 
 
-You can also embed plots, for example:
+              4)    $Dw_i(s^* ) = ∂w_i(s^* )/∂s_j$
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+We scale the Jacobian matrix by multiplying it by a projection matrix: 
+
+              5)    $P_0 = I-(\frac{1}{n} * 1_{nxn})$
+
+Finally, the eigenvalues for this matrix are calculated and sorted by their real parts from largest to smallest (Sandholm 2010). 
+
+              6)    $J = Dw_i (s^* ) \cdot P_0$
+
+There should be one eigenvalue equal to 0, and n-1 nonzero eigenvalues. Positive eigenvalues represent trajectories moving away from an equilibrium point, while negative eigenvalues represent trajectories moving toward an equilibrium point. 
+
+- **Sink** equilibria are attractors - populations with any starting frequency of strategies will move toward the equilibrium frequency. The eigenvalues will all have negative real parts. 
+- **Source** equilibria are repellers - if perturbed away from the equilibrium frequency, the population will not return to equilibrium. The eigenvalues will all have positive real parts. 
+- **Saddle** equilibria act as attractors from some trajectories and repellers from others. The eigenvalues will have both positive and negative real parts. Here, saddles are classified by the number of positive eigenvalues present.
+- Finally, this method of classifying games is **Inconclusive** when all the eigenvalues are zero. This occurs in the presence of a _strange attractor_ or population trajectories that _orbit_ around a Nash equilibrium (sink).
+
+<p>&nbsp;</p>
+### Solving Rock-Paper-Scissors
+Because the payoffs for each strategy in **Rock-Paper-Scissors** are balanced, each strategy has equal fitness and the equilibrium is $\frac{1}{3}$ Rock, $\frac{1}{3}$ Paper, $\frac{1}{3}$ Scissors, and the equilibrium is a **sink**.
+
+On the other hand, in competition between pairs of strategies, there is always a winner and a loser. The 2-strategy pairs make up the faces of the game. When each pair is assessed on its own, the losing strategy is a source and the winning strategy is a **sink**. When these faces are assessed as a part of the full game, each of the vertices becomes a **saddle** due to the trajectory leading to this point along one edge and the trajectory leading away from this point along the next edge.
+
+```{r echo=FALSE}
+W <- matrix(c(0,-1,1, 1,0,-1, -1,1,0), ncol=3, byrow=T)
+colnames(W) <- rownames(W) <- c("Rock", "Paper", "Scissors")
+print(W)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

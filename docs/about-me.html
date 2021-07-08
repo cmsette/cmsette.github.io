@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Carla M. Sette" />
 
 
-<title>Carla M. Sette, PhD</title>
+<title>About Me</title>
 
 <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -29,6 +30,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
@@ -208,6 +212,75 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -215,6 +288,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -266,7 +349,8 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Carla M. Sette, PhD</h1>
+<h1 class="title toc-ignore">About Me</h1>
+<h4 class="author">Carla M. Sette</h4>
 
 </div>
 
@@ -276,26 +360,34 @@ $(document).ready(function () {
 </p>
 <div id="i-am-a-computational-ecologist-who-specializes-in-mechanistic-modeling-and-statistics." class="section level3">
 <h3>I am a computational ecologist who specializes in mechanistic modeling and statistics.</h3>
-<p>I received my PhD in Ecology and Evolutionary Biology from UC Santa Cruz in Barry Sinervo’s lab. My research has primarily focused on developing mechanistic models describing complex ecological systems. <a href="./about-me.html">Learn more about me</a></p>
+<p>I received my PhD in Ecology and Evolutionary Biology from UC Santa Cruz in Barry Sinervo’s lab. My research has primarily focused on developing mechanistic models describing complex ecological systems.</p>
+<p>I have over 9 years of experience in experimental design, hypothesis testing, and mathematical modeling of various biological systems. I have done a little bit of everything in my biology career. I have worked in sterile biotech labs and in the Amazon. I’ve studied disease ecology, thermal ecology, climate change, and game theory. I have also trained in STEM pedagogy and science communication, presented my research at scientific conferences, and published in peer-reviewed journals.</p>
 <p>
  
 </p>
 </div>
-<div id="projects" class="section level2">
-<h2>Projects</h2>
-<div id="solvesimplex" class="section level3">
-<h3>solveSimplex</h3>
-<p><strong>solveSimplex</strong> is an evolutionary game theory solver in R for single-population games with 2-5 strategies. This code solves for all internal, face, and edge equilibria and classifies the equilibrium types (source, saddle, sink).</p>
-<p>Analysis of face and edge games allows for better understanding of equilibrium dynamics in the system and invasion pathways for individual strategies.</p>
-<ul>
-<li><a href="./solveSimplex-guide.html">solveSimplex guide</a></li>
-<li><a href="https://github.com/cmsette/solveSimplex">solveSimplex code</a></li>
-</ul>
+<div id="education" class="section level2">
+<h2>Education</h2>
+<p><strong>PhD</strong>, Ecology and Evolutionary Biology | 2021 University of California, Santa Cruz</p>
+<p><strong>MS</strong>, Biology | 2013 San Francisco State University</p>
+<p><strong>BS</strong>, Biology | 2008 University of California, Los Angeles</p>
+<p>
+ 
+</p>
+</div>
+<div id="publications" class="section level2">
+<h2>Publications</h2>
+<p><strong>Sette, C.M.</strong> <a href="https://escholarship.org/content/qt5mw8939m/qt5mw8939m.pdf">Variation and Extinction: Models for Alternative Strategies and Climate.</a> PhD Thesis, University of California, Santa Cruz (2021).</p>
+<p><strong>Sette, C.M.</strong>, V.T. Vredenburg, A.G. Zink. <a href="https://link.springer.com/article/10.1007/s10393-020-01501-z">“Differences in fungal disease dynamics in co-occurring terrestrial and aquatic amphibians.”</a> EcoHealth 17.3 (2020): 302-314.</p>
+<p>Diele-Viegas, L., L.J. Vitt, B.R. Sinervo, G.R. Colli, F.P. Werneck, D.B. Miles, W.E. Magnusson, J.C. Santos, <strong>C.M. Sette</strong>, G.H.O. Caetano, E. Pontes, T.C.S. Ávila-Pires. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0192834">“Thermal physiology of Amazonian lizards.”</a> PLoS ONE 13.3 (2018): e0192834.</p>
+<p>Andrango, M.B., <strong>C.M. Sette</strong>, and O. Torres-Carvajal. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306456515302011">“Short-term predicted extinction of Andean populations of the lizard Stenocercus guentheri (Iguanidae: Tropidurinae).”</a> Journal of Thermal Biology 62 (2016): 30-36.</p>
+<p><strong>Sette, C.M.</strong>, V.T. Vredenburg, and A.G. Zink. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0006320715300896">“Reconstructing historical and contemporary disease dynamics: A case study using the California slender salamander.”</a> Biological Conservation 192 (2015): 20-29.</p>
+</div>
+
+
+
 </div>
 </div>
-
-
-
 
 </div>
 
@@ -328,6 +420,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

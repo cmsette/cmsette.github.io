@@ -7,16 +7,15 @@ output:
 
 <p>&nbsp;</p>
 ### I am a computational ecologist who specializes in mechanistic modeling and statistics.
-I received my PhD in Ecology and Evolutionary Biology from UC Santa Cruz in Barry Sinervo's lab. My research has primarily focused on developing mechanistic models describing complex ecological systems. [Learn more about me](./aboutme.html)
+I received my PhD in Ecology and Evolutionary Biology from UC Santa Cruz in Barry Sinervo's lab. My research has primarily focused on developing mechanistic models describing complex ecological systems. [Learn more about me](./about-me.html)
 
 <p>&nbsp;</p>
 ## Projects
 ### solveSimplex
-**solveSimplex** is an R function that describes the equilibrium dynamics of single-population evolutionary game theory games of 2-5 strategies. All strategies are assumed to exist in _admixture_, and engage in _continuous time replicator dynamics_.
+**solveSimplex** is an evolutionary game theory solver in R for single-population games with 2-5 strategies. This code solves for all internal, face, and edge equilibria and classifies the equilibrium types (source, saddle, sink).
 
-This code solves for any internal, face, and edge equilibria present in the system and classifies the equilibrium types (source, saddle, sink).
+Analysis of face and edge games allows for better understanding of equilibrium dynamics in the system and invasion pathways for individual strategies.
 
-* solveSimplex webtool (_not yet available_)
 * [solveSimplex guide](./solveSimplex-guide.html)
 * [solveSimplex code](https://github.com/cmsette/solveSimplex)
 

@@ -1,0 +1,35 @@
+---
+title: "About Me"
+author: "Carla M. Sette"
+
+output: html_document
+---
+<p>&nbsp;</p>
+### I am a computational ecologist who specializes in mechanistic modeling and statistics.
+I received my PhD in Ecology and Evolutionary Biology from UC Santa Cruz in Barry Sinervo's lab. My research has primarily focused on developing mechanistic models describing complex ecological systems.
+
+I have over 9 years of experience in experimental design, hypothesis testing, and mathematical modeling of various biological systems. I have done a little bit of everything in my biology career. I have worked in sterile biotech labs  and in the Amazon. I've studied disease ecology, thermal ecology, climate change, and game theory. I have also trained in STEM pedagogy and science communication, presented my research at scientific conferences, and published in peer-reviewed journals. 
+
+<p>&nbsp;</p>
+## Education ##
+**PhD**, Ecology and Evolutionary Biology | 2021
+University of California, Santa Cruz
+
+**MS**, Biology | 2013
+San Francisco State University
+
+**BS**, Biology | 2008
+University of California, Los Angeles
+
+<p>&nbsp;</p>
+## Publications ##
+**Sette, C.M.** [Variation and Extinction: Models for Alternative Strategies and Climate.](https://escholarship.org/content/qt5mw8939m/qt5mw8939m.pdf) PhD Thesis, University of California, Santa Cruz (2021).
+
+**Sette, C.M.**, V.T. Vredenburg, A.G. Zink. ["Differences in fungal disease dynamics in co-occurring terrestrial and aquatic amphibians."](https://link.springer.com/article/10.1007/s10393-020-01501-z) EcoHealth 17.3 (2020): 302-314.
+
+Diele-Viegas, L., L.J. Vitt, B.R. Sinervo, G.R. Colli, F.P. Werneck, D.B. Miles, W.E. Magnusson, J.C. Santos, **C.M. Sette**, G.H.O. Caetano, E. Pontes, T.C.S. Ávila-Pires. [“Thermal physiology of Amazonian lizards."](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0192834) PLoS ONE 13.3 (2018): e0192834.
+
+Andrango, M.B., **C.M. Sette**, and O. Torres-Carvajal. ["Short-term predicted extinction of Andean populations of the lizard Stenocercus guentheri (Iguanidae: Tropidurinae)."](https://www.sciencedirect.com/science/article/abs/pii/S0306456515302011) Journal of Thermal Biology 62 (2016): 30-36. 
+
+**Sette, C.M.**, V.T. Vredenburg, and A.G. Zink. ["Reconstructing historical and contemporary disease dynamics: A case study using the California slender salamander."](https://www.sciencedirect.com/science/article/abs/pii/S0006320715300896) Biological Conservation 192 (2015): 20-29.
+
