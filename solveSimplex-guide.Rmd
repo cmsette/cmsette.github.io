@@ -84,13 +84,74 @@ There should be one eigenvalue equal to 0, and n-1 nonzero eigenvalues. Positive
 
 <p>&nbsp;</p>
 ### Solving Rock-Paper-Scissors
-Because the payoffs for each strategy in **Rock-Paper-Scissors** are balanced, each strategy has equal fitness and the equilibrium is $s^*$ = {$\frac{1}{3}$ Rock, $\frac{1}{3}$ Paper, $\frac{1}{3}$ Scissors}, and the equilibrium is a **sink**.
-
-On the other hand, in competition between pairs of strategies, there is always a winner and a loser. The 2-strategy pairs make up the faces of the game. When each pair is assessed on its own, the losing strategy is a source and the winning strategy is a **sink**. When these faces are assessed as a part of the full game, each of the vertices becomes a **saddle** due to the trajectory leading to this point along one edge and the trajectory leading away from this point along the next edge.
-
+Because the payoffs for each strategy in **Rock-Paper-Scissors** are balanced, each strategy has equal fitness and the equilibrium is $s^*$ = {$\frac{1}{3}$ Rock, $\frac{1}{3}$ Paper, $\frac{1}{3}$ Scissors}. The internal equilibrium is classified as **inconclusive**. The reason for this is made clear when we look at the 2-strategy faces of the game.
 ```{r echo=FALSE}
-W <- matrix(c(0,-1,1, 1,0,-1, -1,1,0), ncol=3, byrow=T)
-colnames(W) <- rownames(W) <- c("Rock", "Paper", "Scissors")
-print(W)
+Equilibria <- data.frame("R" = c(0.3333333,0,1,0), "P" = c(0.3333333,1,0,0), "S" = c(0.3333333,0,0,1), "Eq" = c("Inconclusive","Saddle1","Saddle1","Saddle1"), "Int" = c("yes",rep("",3)), "Apo" = rep("",4), "A.Apo" = rep("",4))
+rownames(Equilibria) = c("R.P.S", "R.P.0", "R.0.S", "0.P.S")
+Equilibria <- list("Equilibria"=Equilibria)
+Equilibria
 ```
 
+In competition between pairs of strategies, there is always a winner and a loser (eg. Paper beats Rock). The pairs of 2 strategies make up the faces of the game. When each pair is assessed on its own, the losing strategy is a source and the winning strategy is a **sink**. 
+```{r echo=FALSE}
+faces <- data.frame("R" = c(0,1,NA), "P" = c(1,NA,0), "S" = c(NA,0,1), "Eq" = c("Sink","Sink","Sink"))
+rownames(faces) = c("R.P._", "R._.S", "_.P.S")
+faces <- list("Faces(2)"=faces)
+faces
+```
+
+When the 2-strategy faces are assessed as a part of the full game, each of the vertices becomes a **saddle** due to the trajectory leading to this point along one 2-strategy face and the trajectory leading away from this point along the next 2-strategy face. (Paper beats Rock, but Scissors in turn beats Paper.)
+
+Similar to the trajectories along the faces of this game, population frequencies will orbit around the internal equilibrium, therefore the eignvalue method of classification is **inconclusive**.
+
+<p>&nbsp;</p>
+### Other game features
+The solveSimplex function also returns whether a game (and in some cases its faces) is **intransitive** and also whether it has **apostasis** (negative frequency-dependence) or **anti-apostasis** (positive frequency-dependence).
+
+With strict-sense **intransitivity**, the competitive hierarchy in the system is cyclical. Each strategy is the best response (clear winner) to the same number of other strategies. Competitive intransitivity is often a feature of stable systems, those with sink equilibria.
+
+**Apostasis** and **Anti-apostasis** are terms from biology that describe negative frequency-dependence (also known as rare advantage) and positive frequency-dependence. Rare advantage contributes to system stability as the fitness of apostatic strategies drops as these strategies become more abundant.
+
+<p>&nbsp;</p>
+## Using the [solveSimplex](https://github.com/cmsette/solveSimplex) function
+```{r echo=F}
+print("solveSimplex(W, names=c(\"R\", \"P\", \"S\"), deconstruct=F, debug=F)", quote=F)
+```
+
+<p>&nbsp;</p>
+### The W matrix
+The W matrix (**W**) can either be a matrix of payoff values or a vector of payoff valuess arranged by row.
+```{r echo=F}
+print("W <- matrix(c(0,-1,1, 1,0,-1, -1,1,0), ncol=3, byrow=T)", quote=F)
+```
+```{r echo=FALSE}
+W <- matrix(c(0,-1,1, 1,0,-1, -1,1,0), ncol=3, byrow=T)
+print(W)
+```
+Or just:
+```{r echo=F}
+print("W <- c(0,-1,1, 1,0,-1, -1,1,0)", quote=F)
+```
+
+<p>&nbsp;</p>
+### Names
+You can enter a vector of custom names for the strategies in your system. Otherwise the default initials will be used (**R**ock-**P**aper-**S**cissors-**L**izard-Spoc**K**).
+```{r echo=F}
+print("names=c(\"R\", \"P\", \"S\")", quote=F)
+```
+
+<p>&nbsp;</p>
+### Solving face games
+In some cases, you may be interested in whether more complex systems of competitors will find a new stable equilibrium if one or more competitors is removed (hysteresis). Likewise, you may be interested whether a system of competitors was able to evolve from a smaller system. 
+
+The solveSimplex function will additionally assess all face games as independent games when the deconstruct parameter is set to **TRUE** (default). This can be suppressed by changing this to **FALSE**.
+```{r echo=F}
+print("deconstruct=F", quote=F)
+```
+
+<p>&nbsp;</p>
+### Debugging
+The Jacobian matrix eigendecomposition of every game assessed (full and face games, as well as independent face games) will be returned when the debug parameter is set to **TRUE**.
+```{r echo=F}
+print("debug=T", quote=F)
+```

@@ -431,12 +431,76 @@ div.tocify {
 </div>
 <div id="solving-rock-paper-scissors" class="section level3">
 <h3>Solving Rock-Paper-Scissors</h3>
-<p>Because the payoffs for each strategy in <strong>Rock-Paper-Scissors</strong> are balanced, each strategy has equal fitness and the equilibrium is <span class="math inline">\(s^*\)</span> = {<span class="math inline">\(\frac{1}{3}\)</span> Rock, <span class="math inline">\(\frac{1}{3}\)</span> Paper, <span class="math inline">\(\frac{1}{3}\)</span> Scissors}, and the equilibrium is a <strong>sink</strong>.</p>
-<p>On the other hand, in competition between pairs of strategies, there is always a winner and a loser. The 2-strategy pairs make up the faces of the game. When each pair is assessed on its own, the losing strategy is a source and the winning strategy is a <strong>sink</strong>. When these faces are assessed as a part of the full game, each of the vertices becomes a <strong>saddle</strong> due to the trajectory leading to this point along one edge and the trajectory leading away from this point along the next edge.</p>
-<pre><code>##          Rock Paper Scissors
-## Rock        0    -1        1
-## Paper       1     0       -1
-## Scissors   -1     1        0</code></pre>
+<p>Because the payoffs for each strategy in <strong>Rock-Paper-Scissors</strong> are balanced, each strategy has equal fitness and the equilibrium is <span class="math inline">\(s^*\)</span> = {<span class="math inline">\(\frac{1}{3}\)</span> Rock, <span class="math inline">\(\frac{1}{3}\)</span> Paper, <span class="math inline">\(\frac{1}{3}\)</span> Scissors}. The internal equilibrium is classified as <strong>inconclusive</strong>. The reason for this is made clear when we look at the 2-strategy faces of the game.</p>
+<pre><code>## $Equilibria
+##               R         P         S           Eq Int Apo A.Apo
+## R.P.S 0.3333333 0.3333333 0.3333333 Inconclusive yes          
+## R.P.0 0.0000000 1.0000000 0.0000000      Saddle1              
+## R.0.S 1.0000000 0.0000000 0.0000000      Saddle1              
+## 0.P.S 0.0000000 0.0000000 1.0000000      Saddle1</code></pre>
+<p>In competition between pairs of strategies, there is always a winner and a loser (eg. Paper beats Rock). The pairs of 2 strategies make up the faces of the game. When each pair is assessed on its own, the losing strategy is a source and the winning strategy is a <strong>sink</strong>.</p>
+<pre><code>## $`Faces(2)`
+##        R  P  S   Eq
+## R.P._  0  1 NA Sink
+## R._.S  1 NA  0 Sink
+## _.P.S NA  0  1 Sink</code></pre>
+<p>When the 2-strategy faces are assessed as a part of the full game, each of the vertices becomes a <strong>saddle</strong> due to the trajectory leading to this point along one 2-strategy face and the trajectory leading away from this point along the next 2-strategy face. (Paper beats Rock, but Scissors in turn beats Paper.)</p>
+<p>Similar to the trajectories along the faces of this game, population frequencies will orbit around the internal equilibrium, therefore the eignvalue method of classification is <strong>inconclusive</strong>.</p>
+<p>
+ 
+</p>
+</div>
+<div id="other-game-features" class="section level3">
+<h3>Other game features</h3>
+<p>The solveSimplex function also returns whether a game (and in some cases its faces) is <strong>intransitive</strong> and also whether it has <strong>apostasis</strong> (negative frequency-dependence) or <strong>anti-apostasis</strong> (positive frequency-dependence).</p>
+<p>With strict-sense <strong>intransitivity</strong>, the competitive hierarchy in the system is cyclical. Each strategy is the best response (clear winner) to the same number of other strategies. Competitive intransitivity is often a feature of stable systems, those with sink equilibria.</p>
+<p><strong>Apostasis</strong> and <strong>Anti-apostasis</strong> are terms from biology that describe negative frequency-dependence (also known as rare advantage) and positive frequency-dependence. Rare advantage contributes to system stability as the fitness of apostatic strategies drops as these strategies become more abundant.</p>
+<p>
+ 
+</p>
+</div>
+</div>
+<div id="using-the-solvesimplex-function" class="section level2">
+<h2>Using the <a href="https://github.com/cmsette/solveSimplex">solveSimplex</a> function</h2>
+<pre><code>## [1] solveSimplex(W, names=c(&quot;R&quot;, &quot;P&quot;, &quot;S&quot;), deconstruct=F, debug=F)</code></pre>
+<p>
+ 
+</p>
+<div id="the-w-matrix" class="section level3">
+<h3>The W matrix</h3>
+<p>The W matrix (<strong>W</strong>) can either be a matrix of payoff values or a vector of payoff valuess arranged by row.</p>
+<pre><code>## [1] W &lt;- matrix(c(0,-1,1, 1,0,-1, -1,1,0), ncol=3, byrow=T)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    0   -1    1
+## [2,]    1    0   -1
+## [3,]   -1    1    0</code></pre>
+<p>Or just:</p>
+<pre><code>## [1] W &lt;- c(0,-1,1, 1,0,-1, -1,1,0)</code></pre>
+<p>
+ 
+</p>
+</div>
+<div id="names" class="section level3">
+<h3>Names</h3>
+<p>You can enter a vector of custom names for the strategies in your system. Otherwise the default initials will be used (<strong>R</strong>ock-<strong>P</strong>aper-<strong>S</strong>cissors-<strong>L</strong>izard-Spoc<strong>K</strong>).</p>
+<pre><code>## [1] names=c(&quot;R&quot;, &quot;P&quot;, &quot;S&quot;)</code></pre>
+<p>
+ 
+</p>
+</div>
+<div id="solving-face-games" class="section level3">
+<h3>Solving face games</h3>
+<p>In some cases, you may be interested in whether more complex systems of competitors will find a new stable equilibrium if one or more competitors is removed (hysteresis). Likewise, you may be interested whether a system of competitors was able to evolve from a smaller system.</p>
+<p>The solveSimplex function will additionally assess all face games as independent games when the deconstruct parameter is set to <strong>TRUE</strong> (default). This can be suppressed by changing this to <strong>FALSE</strong>.</p>
+<pre><code>## [1] deconstruct=F</code></pre>
+<p>
+ 
+</p>
+</div>
+<div id="debugging" class="section level3">
+<h3>Debugging</h3>
+<p>The Jacobian matrix eigendecomposition of every game assessed (full and face games, as well as independent face games) will be returned when the debug parameter is set to <strong>TRUE</strong>.</p>
+<pre><code>## [1] debug=T</code></pre>
 </div>
 </div>
 
