@@ -360,8 +360,19 @@ div.tocify {
 </p>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p><strong><a href="https://github.com/cmsette/solveSimplex">solveSimplex</a></strong> is an R function that describes the equilibrium dynamics of <em>single-population</em> evolutionary game theory games of <strong>2-5 strategies</strong>. All strategies are assumed to exist in <em>admixture</em>, and engage in <em>continuous time replicator dynamics</em>. Methods were developed following Friedman and Sinervo (2016).</p>
-<p>This code solves for any internal and face equilibria present in the system and classifies the equilibrium types (<strong>source, saddle, sink</strong>).</p>
+<p><strong><a href="https://cmsette.shinyapps.io/solvesimplex/">solveSimplex</a></strong> is an R function that describes the equilibrium dynamics of <em>single-population</em> evolutionary game theory games of <strong>2-5 strategies</strong>. All strategies are assumed to exist in <em>admixture</em>, and engage in <em>continuous time replicator dynamics</em>. Analysis of face and edge games allows for better understanding of equilibrium dynamics in the system and invasion pathways for individual strategies.</p>
+<p>This code:</p>
+<ol style="list-style-type: decimal">
+<li>Solves for all internal and edge equilibria present.</li>
+<li>Assesses stability of equilibrium (<strong>Source, Saddle, or Sink</strong>) using the eigenvalue technique (Friedman and Sinervo, 2016).</li>
+<li>Identifies games and faces with strict-sense <strong>intransitivity</strong>.</li>
+<li>Identifies strategies with strict-sense <strong>apostasis</strong>, negative frequency-dependence, and <strong>anti-apostasis</strong>, positive frequency-dependence.</li>
+<li>(GitHub code, but not shiny) Allows for analysis of face games as independent games in order to assess possibility of hysteresis in the system.</li>
+</ol>
+<ul>
+<li><a href="https://github.com/cmsette/solveSimplex">Source code on GitHub</a></li>
+<li><a href="https://cmsette.shinyapps.io/solvesimplex/">Rshiny interactive page</a></li>
+</ul>
 <p>
  
 </p>

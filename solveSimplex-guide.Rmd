@@ -10,9 +10,18 @@ knitr::opts_chunk$set(echo = TRUE)
 <p>&nbsp;</p>
 
 ## Overview
-**[solveSimplex](https://github.com/cmsette/solveSimplex)** is an R function that describes the equilibrium dynamics of _single-population_ evolutionary game theory games of **2-5 strategies**. All strategies are assumed to exist in _admixture_, and engage in _continuous time replicator dynamics_. Methods were developed following Friedman and Sinervo (2016).
+**[solveSimplex](https://cmsette.shinyapps.io/solvesimplex/)** is an R function that describes the equilibrium dynamics of _single-population_ evolutionary game theory games of **2-5 strategies**. All strategies are assumed to exist in _admixture_, and engage in _continuous time replicator dynamics_. Analysis of face and edge games allows for better understanding of equilibrium dynamics in the system and invasion pathways for individual strategies.
 
-This code solves for any internal and face equilibria present in the system and classifies the equilibrium types (**source, saddle, sink**).
+This code: 
+
+1. Solves for all internal and edge equilibria present.
+2. Assesses stability of equilibrium (**Source, Saddle, or Sink**) using the eigenvalue technique (Friedman and Sinervo, 2016). 
+3. Identifies games and faces with strict-sense **intransitivity**.
+4. Identifies strategies with strict-sense **apostasis**, negative frequency-dependence, and **anti-apostasis**, positive frequency-dependence.
+5. (GitHub code, but not shiny) Allows for analysis of face games as independent games in order to assess possibility of hysteresis in the system.
+
+- [Source code on GitHub](https://github.com/cmsette/solveSimplex)
+- [Rshiny interactive page](https://cmsette.shinyapps.io/solvesimplex/)
 
 <p>&nbsp;</p>
 
