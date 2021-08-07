@@ -11,10 +11,12 @@ I received my PhD in Ecology and Evolutionary Biology from UC Santa Cruz in Barr
 
 <p>&nbsp;</p>
 ## Projects
-### [solveSimplex](https://github.com/cmsette/solveSimplex)
+### [solveSimplex](https://cmsette.shinyapps.io/solvesimplex/)
 **solveSimplex** is an evolutionary game theory solver in R for single-population games with 2-5 strategies. 
 
 This code solves for all internal and face equilibria and classifies the equilibrium types (source, saddle, sink). Analysis of face games allows for better understanding of equilibrium dynamics in the system and invasion pathways for individual strategies.
 
 * [Guide to using solveSimplex](./solveSimplex-guide.html)
+* [solveSimplex on Rshiny](https://cmsette.shinyapps.io/solvesimplex/)
+* [Source code on GitHub](https://github.com/cmsette/solveSimplex)
 

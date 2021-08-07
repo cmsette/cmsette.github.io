@@ -21,7 +21,7 @@ This code:
 5. (GitHub code, but not shiny) Allows for analysis of face games as independent games in order to assess possibility of hysteresis in the system.
 
 - [Source code on GitHub](https://github.com/cmsette/solveSimplex)
-- [Rshiny interactive page](https://cmsette.shinyapps.io/solvesimplex/)
+- [solveSimplex on Rshiny](https://cmsette.shinyapps.io/solvesimplex/)
 
 <p>&nbsp;</p>
 
