@@ -16,7 +16,7 @@ I received my PhD in Ecology and Evolutionary Biology from UC Santa Cruz in Barr
 
 This code solves for all internal and face equilibria and classifies the equilibrium types (source, saddle, sink). Analysis of face games allows for better understanding of equilibrium dynamics in the system and invasion pathways for individual strategies.
 
+* [solveSimplex shiny app](https://cmsette.shinyapps.io/solvesimplex/)
 * [Guide to using solveSimplex](./solveSimplex-guide.html)
-* [solveSimplex on Rshiny](https://cmsette.shinyapps.io/solvesimplex/)
 * [Source code on GitHub](https://github.com/cmsette/solveSimplex)
 
