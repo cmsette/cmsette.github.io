@@ -6,18 +6,26 @@ output: html_document
 ---
 <p>&nbsp;</p>
 ## Summary ##
-#### I am a computational ecologist who specializes in mechanistic modeling and statistics.
-I received my PhD in Ecology and Evolutionary Biology from UC Santa Cruz in Barry Sinervo's lab. My research focuses on developing mechanistic and statistical models describing complex ecological systems.
+#### I am a computational ecologist who specializes in mechanistic modeling and statistical analysis of complex biological systems and large datasets. I am excited to transition from academic research to Data Science.
 
-I have worked in a variety of study systems, including using statistical models to understand what environmental variables  contribute to the abundance of a fungal pathogen over time, analyzing evolutionary game theory simulations to describe the mathematical features of stable systems of competitors, and developing mechanistic models to predict climate change-driven extinctions.
+I have over 9 years of experience in experimental design, hypothesis testing, and mathematical modeling of various biological systems. I am a flexible researcher with a strong repertoire of data analysis, statistical, and modeling skills. 
+
+My research has involved:
+
+* Using statistical models to understand what environmental variables that contribute to the abundance of a fungal pathogen over time.
+* Analyzing evolutionary game theory simulations to describe the mathematical features of stable systems of competitors.
+* Utilizing published empirical data to parameterize a game theory model of plastic developmental strategies.
+* Developing mechanistic models to predict climate change-driven extinctions.
 
 <p>&nbsp;</p>
 ## Education ##
 **PhD**, Ecology and Evolutionary Biology | 2021
 University of California, Santa Cruz
+Thesis adviser: Barry Sinervo
 
 **MS**, Biology | 2013
 San Francisco State University
+Thesis adviser: Andrew G. Zink
 
 **BS**, Biology | 2008
 University of California, Los Angeles
